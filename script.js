@@ -52,12 +52,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
     
-    let playerSelection = prompt("What is your selection?").toLowerCase()
-    let computerSelection =  getComputerChoice().toLowerCase()
-    playRound(playerSelection, computerSelection)
+let playerSelection = prompt("What is your selection?").toLowerCase()
+let computerSelection =  getComputerChoice().toLowerCase()
+playRound(playerSelection, computerSelection)
 
-function playGame() {
-    
 
 
 
