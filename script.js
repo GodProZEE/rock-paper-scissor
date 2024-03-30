@@ -18,7 +18,7 @@ let playerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return "It is a draw"
+        return "It is a draw."
     }
     else if (playerSelection === "rock") {
         if (computerSelection === "paper") {
@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             playerScore += 1
-            return "You win! Rock beats scissors"
+            return "You win! Rock beats scissors."
         }
     }
 
@@ -36,21 +36,21 @@ function playRound(playerSelection, computerSelection) {
             return "You win! Paper beats rock."
         }
         else {
-            return "You lose! Scissor beats paper."
+            return "You lose! Scissors beat paper."
         }
     }
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
             playerScore += 1
-            return "You win! Scissors beats paper"
+            return "You win! Scissors beat paper."
         }
         else {
-            return "You lose! Rock beats scissors"
+            return "You lose! Rock beats scissors."
         }
     }
 
     else {
-        return "You didn't select a valid option from the specified options"
+        return "You didn't select a valid option from the specified options."
     }
 }
     
@@ -58,19 +58,26 @@ function playGame() {
 
     var playerSelection = prompt("Please enter your selection").toLowerCase()
     var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), playerScore)
+    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
     var playerSelection = prompt("Please enter your selection").toLowerCase()
     var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), playerScore)
+    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
     var playerSelection = prompt("Please enter your selection").toLowerCase()
     var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), playerScore)
+    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
     var playerSelection = prompt("Please enter your selection").toLowerCase()
     var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), playerScore)
+    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
     var playerSelection = prompt("Please enter your selection").toLowerCase()
     var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), playerScore)
+    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
+
+    if (playerScore > 2) {
+        console.log("You win overall! :)")
+    }
+    else {
+        console.log("You lose overall :(") 
+    }
 }
 
 playGame()
