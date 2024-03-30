@@ -14,7 +14,7 @@ function getComputerChoice() {
     };
 }
 
-var playerScore = 0;
+let playerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -32,6 +32,7 @@ function playRound(playerSelection, computerSelection) {
 
     else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
+            playerScore += 1
             return "You win! Paper beats rock."
         }
         else {
@@ -40,6 +41,7 @@ function playRound(playerSelection, computerSelection) {
     }
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
+            playerScore += 1
             return "You win! Scissors beats paper"
         }
         else {
@@ -52,10 +54,26 @@ function playRound(playerSelection, computerSelection) {
     }
 }
     
-let playerSelection = prompt("What is your selection?").toLowerCase()
-let computerSelection =  getComputerChoice().toLowerCase()
-playRound(playerSelection, computerSelection)
+function playGame() {
 
+    var playerSelection = prompt("Please enter your selection").toLowerCase()
+    var computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection), playerScore)
+    var playerSelection = prompt("Please enter your selection").toLowerCase()
+    var computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection), playerScore)
+    var playerSelection = prompt("Please enter your selection").toLowerCase()
+    var computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection), playerScore)
+    var playerSelection = prompt("Please enter your selection").toLowerCase()
+    var computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection), playerScore)
+    var playerSelection = prompt("Please enter your selection").toLowerCase()
+    var computerSelection = getComputerChoice()
+    console.log(playRound(playerSelection, computerSelection), playerScore)
+}
+
+playGame()
 
 
 
