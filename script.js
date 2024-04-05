@@ -20,37 +20,16 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It is a draw."
     }
-    else if (playerSelection === "rock") {
-        if (computerSelection === "paper") {
-            return "You lose! Paper beats rock."
-        }
-        else {
-            playerScore += 1
-            return "You win! Rock beats scissors."
-        }
+    else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors')||
+        (playerSelection === 'paper' && computerSelection === 'rock')||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+    ) {
+        playerScore += 1
+        return `You win! ${playerSelection} beats ${computerSelection}`
     }
-
-    else if (playerSelection === "paper") {
-        if (computerSelection === "rock") {
-            playerScore += 1
-            return "You win! Paper beats rock."
-        }
-        else {
-            return "You lose! Scissors beat paper."
-        }
-    }
-    else if (playerSelection === "scissors") {
-        if (computerSelection === "paper") {
-            playerScore += 1
-            return "You win! Scissors beat paper."
-        }
-        else {
-            return "You lose! Rock beats scissors."
-        }
-    }
-
     else {
-        return "You didn't select a valid option from the specified options."
+        return `You lose! ${computerSelection} beats ${playerSelection}`
     }
 }
     
