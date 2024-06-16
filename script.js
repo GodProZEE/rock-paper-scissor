@@ -15,7 +15,8 @@ function getComputerChoice() {
 }
 
 let playerScore = 0;
-
+let computerScore = 0;
+let playerSelection = ''
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It is a draw."
@@ -26,42 +27,72 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
         playerScore += 1
-        return `You win! ${playerSelection} beats ${computerSelection}`
+        return 'win'
     }
     else {
-        return `You lose! ${computerSelection} beats ${playerSelection}`
-    }
-}
-    
-function playGame() {
-
-    var playerSelection = prompt("Please enter your selection").toLowerCase()
-    var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
-    var playerSelection = prompt("Please enter your selection").toLowerCase()
-    var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
-    var playerSelection = prompt("Please enter your selection").toLowerCase()
-    var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
-    var playerSelection = prompt("Please enter your selection").toLowerCase()
-    var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
-    var playerSelection = prompt("Please enter your selection").toLowerCase()
-    var computerSelection = getComputerChoice()
-    console.log(playRound(playerSelection, computerSelection), "Player:", playerSelection+ ",", "Computer:", computerSelection + ",", "Player score:", playerScore)
-
-    if (playerScore > 2) {
-        console.log("You win overall! :)")
-    }
-    else {
-        console.log("You lose overall :(") 
+        computerScore += 1
+        return `lose`
     }
 }
 
-playGame()
+const allButtons = document.querySelectorAll('button');
+allButtons.forEach((currentButton) => {
+    currentButton.addEventListener('click', (event) => {
+        textDiv = document.querySelector('.currentResult')
+        if (computerScore === 5) {
+            textDiv.textContent = 'Uhhh sorry to say but uhhh you kinda lost'
+        } else if (playerScore === 5) {
+            textDiv.textContent = "OK great, you won, be proud of yourself"
+        } else {
+            
+            allButtons.forEach((myButton) => {
+                myButton.classList.remove("shadowClass")
+            })
 
+            textDiv = document.querySelector('.currentResult')
+            textDiv.textContent = ''
+            switch (event.target.id) {
+                case 'rockBtn':
+                    playerSelection = 'rock';
+                    break;
+                case 'paperBtn':
+                    playerSelection = 'paper';
+                    break;
+                case 'scissorsBtn':
+                    playerSelection = 'scissors';
+                    break;
+            }
+            var compSel = getComputerChoice()
 
+            
+            const compText = document.createElement('p') 
+            const playerText = document.createElement('p')
+            const matchResult = document.createElement('p')
+            const scoresDiv = document.querySelector(".scoresDiv")
+            scoresDiv.textContent = ''
+            let scores = document.createElement('p')
 
+            compText.textContent = `Computer chose: ${compSel}`
+            playerText.textContent = `Player chose: ${playerSelection}`
 
+            textDiv.appendChild(compText)
+            textDiv.appendChild(playerText)
+            let playResult = playRound(playerSelection, compSel)
+            if (playResult === 'win') {
+                matchResult.textContent = `You win! ${playerSelection} beats ${compSel}`
+            } else if (playResult === 'lose') {
+                matchResult.textContent = `You lose! ${compSel} beats ${playerSelection}`
+            } else {
+                matchResult.textContent = `Oh great, that's a draw`
+            }
 
+            textDiv.appendChild(matchResult)
+            scores.textContent = `Your score is: ${playerScore}. Computer score is ${computerScore}`
+            scoresDiv.appendChild(scores)
+            event.target.classList.add("shadowClass")
+        }
+            
+
+        }
+    )
+})
