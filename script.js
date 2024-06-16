@@ -40,8 +40,10 @@ allButtons.forEach((currentButton) => {
     currentButton.addEventListener('click', (event) => {
         textDiv = document.querySelector('.currentResult')
         if (computerScore === 5) {
+            textDiv.setAttribute('style', 'margin-top: 60px;')
             textDiv.textContent = 'Uhhh sorry to say but uhhh you kinda lost'
         } else if (playerScore === 5) {
+            textDiv.setAttribute('style', 'margin-top: 60px;')
             textDiv.textContent = "OK great, you won, be proud of yourself"
         } else {
             
